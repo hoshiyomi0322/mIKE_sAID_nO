@@ -1,0 +1,355 @@
+% !TeX program = xelatex
+
+\documentclass[aspectratio=169]{beamer}
+
+% ============================================================
+% 1. Fonts
+% ============================================================
+\usepackage{fontspec}
+
+\setmainfont{Microsoft JhengHei}
+\setsansfont{Microsoft JhengHei}
+\setmonofont{JetBrains Mono}
+
+\XeTeXlinebreaklocale "zh"
+
+
+% ============================================================
+% 2. Mathematics, enumerate
+% ============================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\setlistdepth{6}
+\renewlist{itemize}{itemize}{9}
+\renewlist{enumerate}{enumerate}{9}
+\setlist[itemize,1]{label=\textbullet}
+\setlist[itemize,2]{label=$\circ$}
+\setlist[itemize,3]{label=$\ast$}
+\setlist[itemize,4]{label=$\cdot$}
+\setlist[itemize,5]{label=--}
+\setlist[itemize,6]{label=--}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=\arabic*.}
+\setlist[enumerate,3]{label=\arabic*.}
+\setlist[enumerate,4]{label=\arabic*.}
+
+
+% ============================================================
+% 3. Images / Tables / Boxes
+% ============================================================
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+
+
+% ============================================================
+% 4. Colors
+% ============================================================
+\definecolor{myRed}{RGB}{145,90,90}
+\definecolor{myGreen}{RGB}{85,115,100}
+\definecolor{myBlue}{RGB}{70,100,130}
+\definecolor{myOrange}{RGB}{155,115,80}
+\definecolor{myPurple}{RGB}{115,100,130}
+
+\definecolor{myGray}{RGB}{242,242,238}
+\definecolor{myDarkgray}{RGB}{90,90,88}
+\definecolor{myBlack}{RGB}{45,45,43}
+
+
+% ============================================================
+% 5. Beamer Colors
+% ============================================================
+\setbeamercolor{structure}   {fg=myBlue}
+\setbeamercolor{title}       {fg=white, bg=myBlue}
+\setbeamercolor{frametitle}  {fg=white, bg=myBlue}
+\setbeamercolor{block title} {fg=white, bg=myBlue}
+\setbeamercolor{block body}  {fg=myBlack, bg=myGray}
+\setbeamercolor{alerted text}{fg=myRed}
+\setbeamercolor{example text}{fg=myGreen}
+
+
+% ============================================================
+% 6. Theme
+% ============================================================
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\setbeamertemplate{navigation symbols}{}
+
+
+% ============================================================
+% 7. Footer
+% ============================================================
+\setbeamertemplate{footline}{
+    \leavevmode
+    \hbox{
+        % Left: Author
+        \begin{beamercolorbox}[
+            wd=.33\paperwidth,
+            ht=2.5ex,
+            dp=1ex,
+            center
+        ]{author in head/foot}
+            \insertdate
+        \end{beamercolorbox}
+
+        % Center: Title
+        \begin{beamercolorbox}[
+            wd=.33\paperwidth,
+            ht=2.5ex,
+            dp=1ex,
+            center
+        ]{title in head/foot}
+            \insertshorttitle
+        \end{beamercolorbox}
+
+        % Right: Page Number
+        \begin{beamercolorbox}[
+            wd=.33\paperwidth,
+            ht=2.5ex,
+            dp=1ex,
+            center
+        ]{date in head/foot}
+            \insertframenumber{} / \inserttotalframenumber
+        \end{beamercolorbox}
+    }
+}
+
+
+% ============================================================
+% 8. Presentation Information
+% ============================================================
+\title{簡報模板暨使用範例}
+\author{Syu}
+\date{September 17, 2026}
+
+
+% ========================= DocStart =========================
+\begin{document}
+
+% ============================================================
+% Title Page
+% ============================================================
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+% ============================================================
+% Index
+% ============================================================
+\begin{frame}{Index}
+    \tableofcontents
+\end{frame}
+
+
+% ============================================================
+% Section
+% ============================================================
+\section{基本語法}
+
+
+% ============================================================
+% Basic Text
+% ============================================================
+\begin{frame}{文字}
+    一般文字。
+    
+    \bigskip
+    
+    \textbf{粗體文字}
+    
+    \textit{斜體文字}
+    
+    \alert{警告或重點文字}
+
+    \href{https://github.com/shihyousyu}{超連結}
+    
+\end{frame}
+
+
+% ============================================================
+% Itemize
+% ============================================================
+\begin{frame}{項目列表}
+    \begin{itemize}
+    
+        \item 第一層
+        
+        \begin{itemize}
+        
+            \item 第二層
+            
+            \begin{itemize}
+            
+                \item 第三層
+                
+            \end{itemize}
+            
+        \end{itemize}
+        
+        \item 第二個項目
+        
+    \end{itemize}
+\end{frame}
+
+
+% ============================================================
+% Enumerate
+% ============================================================
+\begin{frame}{編號列表}
+    \begin{enumerate}
+    
+        \item 第一項
+        \item 第二項
+        \item 第三項
+        
+    \end{enumerate}
+\end{frame}
+
+
+% ============================================================
+% Blocks
+% ============================================================
+\begin{frame}{Block}
+    \begin{block}{一般 Block}
+        這是一個一般的 Block。
+    \end{block}
+    
+    \begin{alertblock}{Alert Block}
+        這是一個警告 Block。
+    \end{alertblock}
+
+    \begin{exampleblock}{Example Block}
+        這是一個範例 Block。
+    \end{exampleblock}
+\end{frame}
+
+
+% ============================================================
+% Mathematics
+% ============================================================
+\begin{frame}{數學公式}
+    行內公式：
+    $E = mc^2$
+    \bigskip
+
+    顯示公式：
+    \[
+        E = mc^2
+    \]
+
+    \begin{equation}
+        a^2 + b^2 = c^2
+    \end{equation}
+\end{frame}
+
+
+% ============================================================
+% Columns
+% ============================================================
+\begin{frame}{雙欄}
+    \begin{columns}
+
+        % ========================
+        % Left
+        % ========================
+        \begin{column}{0.48\textwidth}
+            \begin{block}{左側}
+                左側內容。
+            \end{block}
+        \end{column}
+
+
+        % ========================
+        % Right
+        % ========================
+        \begin{column}{0.48\textwidth}
+            \begin{block}{右側}
+                右側內容。
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+% ============================================================
+% Table
+% ============================================================
+\begin{frame}{表格}
+    \begin{table}
+        \centering
+
+        \begin{tabular}{lcc}
+
+            \toprule
+
+            Language & Level & Usage \\
+
+            \midrule
+
+            C/C++ & High & System \\
+
+            Python & High & Data \\
+
+            Java & Medium & Backend \\
+
+            \bottomrule
+            
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+% ============================================================
+% Image
+% ============================================================
+\begin{frame}{圖片}
+
+    \centering
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=.5\linewidth]{you don't have to be great to start, but you have to start to be great.png}
+        \caption{Example}
+        \label{fig:placeholder}
+    \end{figure}
+
+\end{frame}
+
+
+% ============================================================
+% Tcolorbox
+% ============================================================
+\begin{frame}{自訂 Box}
+    \begin{tcolorbox}[
+        colback=myGray,
+        colframe=myBlue,
+        title=Custom Box
+    ]
+        這是一個使用 tcolorbox 製作的自訂區塊。
+    \end{tcolorbox}
+\end{frame}
+
+
+% ============================================================
+% Final
+% ============================================================
+\begin{frame}{結束}
+
+    \centering
+
+    \Huge
+    Thank You
+
+    \bigskip
+
+    \large
+    Questions?
+
+\end{frame}
+
+
+\end{document}
